@@ -26,11 +26,11 @@ function appendTrackData(apiResponse) {
   let imgSrc = apiResponse.artworkUrl100;
   let track = apiResponse.trackCensoredName;
 
-  let newTrack = `<p class"track-data">
-                      <img  class="" src="${imgSrc}"/>
+  let newTrack = `<p class="track-data">
+                      <img src="${imgSrc}"/>
                       <span class="artist"> ${artist}: </span>
                       <span class="track"> ${track}</span>
-                      </p>`
+                  </p>`
   trackOutput = document.querySelector("#track-output");
   trackOutput.insertAdjacentHTML("beforeend", newTrack);
 }
