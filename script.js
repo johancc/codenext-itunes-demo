@@ -5,13 +5,8 @@ async function getData() {
   searchTerm = document.querySelector("#input-search").value;
   searchTermFormatted = searchTerm.replaceAll(" ", "+");
   console.log(searchTermFormatted);
-  let response = await fetch(`https://itunes.apple.com/search?term=${searchTermFormatted}&media=music`, {
-    method: "GET", mode: "no-cors",
-  });
-  console.log(response);
-  console.log(response.status);
+  let response = await fetch(`http://itunes.apple.com/search?term=${searchTermFormatted}&media=music&entity=musicTrack&country=US`);
   let data = await response.json();
-  console.log("Received: " + data);
   displayData(data);
 }
 
@@ -21,11 +16,7 @@ function displayData(data) {
   //loop through the data, top level is object:
   let results = data['results'];
   for (let result of results) {
-    console.log(result["artistName"] + " vs " + searchTerm);
-    artist = result["artistName"].toLowerCase();
-    if (artist.includes(searchTerm.toLowerCase())) {
-      appendTrackData(result);
-    }
+    appendTrackData(result);
   }
 }
 
